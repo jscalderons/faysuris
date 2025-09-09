@@ -1,0 +1,289 @@
+---
+// src/pages/index.astro
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faysuris Nail Spa & Academy — Enlaces Oficiales</title>
+    <meta name="description" content="Página de enlaces oficiales de Faysuris Nail Spa & Academy: reservas, redes sociales y sitio web." />
+    <meta name="theme-color" content="#000000" />
+    <style>
+      :root {
+        --gold-1: #d4af37;
+        --gold-2: #f4d03f;
+        --black-1: #000000;
+        --black-2: #1a1a1a;
+        --white: #ffffff;
+        --maxw: 600px;
+        --radius: 22px;
+        --shadow: 0 20px 40px rgba(0,0,0,.45);
+        --transition: 0.3s ease;
+      }
+
+      /* RESET SUAVE */
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: radial-gradient(1200px 800px at 20% -10%, #2b2b2b 0%, #0f0f0f 50%, #000 100%),
+                    linear-gradient(180deg, #111 0%, #000 100%);
+        color: #111;
+        display: grid;
+        place-items: center;
+        padding: 28px 18px;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--maxw);
+        background: rgba(255,255,255, 0.92);
+        border: 1px solid var(--gold-1);
+        border-image: linear-gradient(60deg, var(--gold-1), var(--gold-2)) 1;
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        backdrop-filter: saturate(120%) blur(8px);
+        -webkit-backdrop-filter: saturate(120%) blur(8px);
+        overflow: hidden;
+      }
+
+      /* CINTA SUPERIOR SUTIL DORADA */
+      .wrap::before {
+        content: "";
+        display: block;
+        height: 4px;
+        background: linear-gradient(90deg, var(--gold-1), var(--gold-2), var(--gold-1));
+      }
+
+      header {
+        padding: 26px 22px 10px;
+        text-align: center;
+      }
+
+      .logo {
+        width: 180px;
+        height: 72px;
+        margin: 0 auto 12px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: conic-gradient(from 180deg at 50% 50%, rgba(212,175,55,0.12), rgba(244,208,63,0.06), transparent 30%);
+      }
+
+      /* Placeholder de logo (fondo transparente para letras negras) */
+      .logo span {
+        font-weight: 700;
+        letter-spacing: .5px;
+        color: #111;
+      }
+
+      h1 {
+        margin: 4px 0 6px;
+        font-size: 1.45rem;
+        color: #111;
+      }
+
+      .subtitle {
+        margin: 0 0 6px;
+        color: #333;
+        font-size: .98rem;
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,.12), transparent);
+        margin: 10px 22px 14px;
+      }
+
+      .links {
+        padding: 0 18px 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .link-card {
+        position: relative;
+        background: #0b0b0b;
+        color: var(--white);
+        border: 1px solid rgba(212,175,55,0.75);
+        border-radius: 18px;
+        box-shadow: 0 10px 16px rgba(0,0,0,.35);
+        padding: 14px 16px;
+        text-decoration: none;
+        display: grid;
+        gap: 4px;
+        transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), filter var(--transition);
+        isolation: isolate;
+      }
+
+      .link-card::before {
+        /* brillo dorado en hover */
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(600px 120px at var(--mx, 50%) 100%, rgba(244,208,63,0.25), transparent 60%),
+                    linear-gradient(90deg, rgba(212,175,55,0.12), rgba(244,208,63,0.12), rgba(212,175,55,0.12));
+        opacity: 0;
+        transition: opacity var(--transition);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .link-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 28px rgba(0,0,0,.45);
+        border-color: var(--gold-2);
+        filter: drop-shadow(0 0 10px rgba(244,208,63,0.35));
+      }
+      .link-card:hover::before { opacity: 1; }
+
+      .title {
+        font-size: 1.02rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        line-height: 1.25;
+      }
+      .title .emoji { font-size: 1.15rem; }
+
+      .desc {
+        font-size: .92rem;
+        color: #d6d6d6;
+        line-height: 1.35;
+      }
+
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        font-size: .72rem;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
+        color: #111;
+        font-weight: 700;
+        letter-spacing: .25px;
+      }
+
+      footer {
+        padding: 12px 18px 22px;
+        text-align: center;
+        color: #333;
+        font-size: .9rem;
+      }
+
+      .brandline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #111;
+        font-weight: 600;
+      }
+
+      .gold {
+        background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Animaciones de entrada escalonadas */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(8px);
+        animation: inUp .6s var(--transition) forwards;
+      }
+      .links .fade-up { animation-delay: var(--ad, 0s); }
+
+      @keyframes inUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Responsividad */
+      @media (max-width: 380px) {
+        .title { font-size: 1rem; }
+        .desc { font-size: .9rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap" role="main">
+      <header class="fade-up" style="--ad: .05s">
+        <div class="logo" aria-label="Área para logo (fondo transparente)">
+          <!-- Reemplaza este span por <img src="/logo.svg" alt="Faysuris" /> si ya tienes el logo -->
+          <span>Faysuris</span>
+        </div>
+        <h1>Faysuris Nail Spa <span class="gold">&amp; Academy</span></h1>
+        <p class="subtitle">Elegancia minimalista • Spa de lujo</p>
+      </header>
+
+      <div class="divider"></div>
+
+      <section class="links" aria-label="Enlaces oficiales">
+        <a class="link-card fade-up" style="--ad: .12s" href="http://faysuris.com" target="_blank" rel="noopener noreferrer" aria-label="Sitio Web Oficial de Faysuris. Conoce todos nuestros servicios.">
+          <span class="title"><span class="emoji" aria-hidden="true">🌐</span> Sitio Web Oficial</span>
+          <span class="desc">Conoce todos nuestros servicios</span>
+          <span class="badge" aria-hidden="true">Oficial</span>
+        </a>
+
+        <a class="link-card fade-up" style="--ad: .18s" href="https://www.instagram.com/faysurisnailacademy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Academy. Academia de uñas profesional.">
+          <span class="title"><span class="emoji" aria-hidden="true">🎓</span> Instagram Academy</span>
+          <span class="desc">Academia de uñas profesional</span>
+        </a>
+
+        <a class="link-card fade-up" style="--ad: .24s" href="https://www.instagram.com/faysurisnailspa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Nail Spa. Spa de uñas y belleza.">
+          <span class="title"><span class="emoji" aria-hidden="true">💅</span> Instagram Nail Spa</span>
+          <span class="desc">Spa de uñas y belleza</span>
+        </a>
+
+        <a class="link-card fade-up" style="--ad: .30s" href="https://reservas.koibox.cloud/faysuri-s-nail-spa-academy?ref=instagram&fbclid=PAQ0xDSwMUB5tleHRuA2FlbQIxMQABp0TLqu-gIeaHBCS2wjLhLBbiKPizP796-gfkaMgp_a_YyLNH1RtZlhkLI-DZ_aem_C4tktFqRKbSvyEW4MT5Ozg" target="_blank" rel="noopener noreferrer" aria-label="Reservar Cita. Agenda tu cita online.">
+          <span class="title"><span class="emoji" aria-hidden="true">📅</span> Reservar Cita</span>
+          <span class="desc">Agenda tu cita online</span>
+        </a>
+
+        <a class="link-card fade-up" style="--ad: .36s" href="https://wa.me/59995247230" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp. Contáctanos directamente.">
+          <span class="title"><span class="emoji" aria-hidden="true">💬</span> WhatsApp</span>
+          <span class="desc">Contáctanos directamente</span>
+        </a>
+
+        <a class="link-card fade-up" style="--ad: .42s" href="https://www.facebook.com/faysurisnailacademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook. Síguenos en Facebook.">
+          <span class="title"><span class="emoji" aria-hidden="true">📘</span> Facebook</span>
+          <span class="desc">Síguenos en Facebook</span>
+        </a>
+      </section>
+
+      <footer class="fade-up" style="--ad: .5s">
+        <p class="brandline">
+          <span>© <span id="year"></span> Faysuris Nail Spa &amp; Academy</span>
+          <span class="gold">•</span>
+          <span>Elegancia en cada detalle</span>
+        </p>
+      </footer>
+    </main>
+
+    <script type="module">
+      // Fecha actual automática en el footer
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Efecto de brillo que sigue el mouse en cada card (para el gradiente dorado)
+      document.querySelectorAll('.link-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          card.style.setProperty('--mx', x + '%');
+        });
+      });
+
+      // Añadir foco táctil para accesibilidad en dispositivos táctiles
+      document.querySelectorAll('.link-card').forEach(card => {
+        card.addEventListener('touchstart', () => card.classList.add('hover'));
+        card.addEventListener('touchend', () => card.classList.remove('hover'));
+      });
+    </script>
+  </body>
+</html>
